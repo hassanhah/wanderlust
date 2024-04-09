@@ -35,10 +35,28 @@ _I'd love for you to make the most of this project - it's all about learning, he
 3. **Install Required Dependencies**
 
    ```bash
-   npm i
+   # installs NVM (Node Version Manager)
+   	 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+# download and install Node.js
+	nvm install 20
+# verifies the right Node.js version is in the environment
+	node -v # should print `v20.12.1`
+# verifies the right NPM version is in the environment
+	npm -v # should print `10.5.0`
+   	npm i
    ```
 
 4. **Set up your MongoDB Database**
+    sudo apt-get install gnupg curl
+   curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+   echo  "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+   sudo apt-get update
+	sudo apt-get install -y mongodb-org
+	Start MongoDB Service:
+	sudo systemctl start mongod
+	- Starts the MongoDB service.	
 
    - Open MongoDB Compass and connect MongoDB locally at `mongodb://localhost:27017`.
 
@@ -94,7 +112,6 @@ _I'd love for you to make the most of this project - it's all about learning, he
    ```bash
    npm run dev
    ```
-
 ## 🌟 Ready to Contribute?
 
 Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
@@ -103,4 +120,4 @@ Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlus
 
 If you find this project interesting and inspiring, please consider showing your support by starring it on GitHub! Your star goes a long way in helping me reach more developers and encourages me to keep enhancing the project.
 
-🚀 Feel free to get in touch with me for any further queries or support, happy to help :)
+🚀 Feel ree to get in touch with me for any further queries or support, happy to help :)
