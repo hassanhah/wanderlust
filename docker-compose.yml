@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongodb:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - ./backend/data:/data
+    ports:
+      - "27017:27017"
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend  # Specify the build context directory
+      dockerfile: Dockerfile  # Optional: If your Dockerfile is named differently
+    env_file:
+      - ./backend/.env.sample
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend  # Specify the build context directory
+      dockerfile: Dockerfile  # Optional: If your Dockerfile is named differently
+    env_file:
+      - ./frontend/.env.sample
+    ports:
+      - "5173:5173"
+
+volumes:
+  mongodb_data:
+
